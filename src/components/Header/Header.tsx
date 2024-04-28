@@ -24,13 +24,13 @@ const Header: React.FC = () => {
           opacity: isConnectHighlighted || isNetworkSwitchHighlighted ? 1 : 0,
         }}
       />
-      <div className="flex justify-between items-center p-4 pb-7 h-20 w-full fixed">
+      <div className="flex justify-between items-center p-4 pb-7 h-20 w-full fixed bg-gray-900">
         <div className="flex items-center gap-32 h-full w-48 cursor-pointer">
-          <h1 className="text-primary" onClick={() => router.push("/")}>
+          <h1 className="text-primary font-serif font-semibold text-lg" onClick={() => router.push("/")}>
             dWell
           </h1>
           <h1
-            className="`text-white w-fit whitespace-nowrap"
+            className="`text-white w-fit whitespace-nowrap font-serif font-semibold text-lg"
             onClick={() => router.push("/collection")}
           >
             My Collection

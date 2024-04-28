@@ -14,10 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-gray-900">
         <Providers>
           <Header />
-          <section className="pt-20 h-full w-full">{children}</section>
+          <section className="pt-20 h-full w-full" id="__next">
+            {children}
+          </section>
         </Providers>
       </body>
     </html>
