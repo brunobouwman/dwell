@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import GoogleButton from "react-google-button";
 import { StepEvent } from "../@interfaces/Stepper/stepper";
+import { signIn, useSession } from "next-auth/react";
 
 const DashBoard: React.FC = () => {
   const { address } = useWeb3ModalAccount();
@@ -17,24 +18,9 @@ const DashBoard: React.FC = () => {
   const nftContract = getNFTContract();
   const router = useRouter();
   const isFirstAccess = getIsFirstAccess();
+  const { data: session } = useSession();
 
-  useEffect(() => {
-    if (!address) {
-      router.push("/");
-      return;
-    }
-  }, [router, address]);
-
-  useEffect(() => {
-    if (!nftContract || !address) return;
-
-    (async () => {
-      const hasNFT = await nftContract.methods.hasIdentityToken(address).call();
-
-      setIsFirstAccess(!hasNFT);
-    })();
-  }, [nftContract, address, setIsFirstAccess]);
-
+  //TODO: Maybe gather eventListeners in a single component
   useEffect(() => {
     if (!nftContract) return;
 
@@ -56,6 +42,32 @@ const DashBoard: React.FC = () => {
       })
       .on("error", console.error);
   }, [nftContract, setIsFirstAccess]);
+
+  useEffect(() => {
+    if (!session || !window) return;
+
+    const sessionAuthenticatedEvent = new Event("sessionAuthenticated");
+    window.dispatchEvent(sessionAuthenticatedEvent);
+
+    //TODO: 
+  }, [session]);
+
+  useEffect(() => {
+    if (!address) {
+      router.push("/");
+      return;
+    }
+  }, [router, address]);
+
+  useEffect(() => {
+    if (!nftContract || !address) return;
+
+    (async () => {
+      const hasNFT = await nftContract.methods.hasIdentityToken(address).call();
+
+      setIsFirstAccess(!hasNFT);
+    })();
+  }, [nftContract, address, setIsFirstAccess]);
 
   const mintFirstNFT = async () => {
     if (!nftContract) return;
@@ -124,13 +136,12 @@ const DashBoard: React.FC = () => {
             Ready to show today&#39;s work?
           </h2>
           <GoogleButton
-            // onClick={async () =>
-            //   signIn("google", {
-            //     redirect: true,
-            //     callbackUrl: "/dashboard",
-            //   })
-            // }
-            onClick={mintFirstNFT}
+            onClick={async () =>
+              signIn("google", {
+                redirect: true,
+                callbackUrl: "/dashboard",
+              })
+            }
           />
         </div>
       )}

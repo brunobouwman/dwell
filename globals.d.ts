@@ -1,3 +1,5 @@
+import { Server } from "socket.io";
+
 declare global {
   interface Window {
     ethereum: any;
@@ -18,6 +20,13 @@ declare global {
       "w3m-onramp-widget": Pick<W3mOnrampWidget, "disabled">;
     }
   }
+
+  namespace NodeJS {
+    interface Global {
+      io: Server;
+    }
+  }
 }
 
-export {};
+export { };
+

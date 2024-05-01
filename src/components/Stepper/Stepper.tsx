@@ -49,6 +49,9 @@ const Stepper: React.FC<IStepper> = ({ steps, setIsModalOpen }) => {
           isLastStep={(value) => setIsLastStep(value)}
           isFirstStep={(value) => setIsFirstStep(value)}
           activeLineClassName="bg-green-500"
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
         >
           {steps.map((step, index) => (
             <Step
@@ -58,8 +61,16 @@ const Stepper: React.FC<IStepper> = ({ steps, setIsModalOpen }) => {
                   ? "!bg-primary"
                   : "bg-gray-700"
               }`}
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
             >
-              {loading && activeStep === index ? <Spinner /> : null}
+              {loading && activeStep === index ? (
+                <Spinner
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                />
+              ) : null}
             </Step>
           ))}
         </StepperComponent>

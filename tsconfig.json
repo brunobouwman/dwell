@@ -26,8 +26,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "globals.d.ts",
     ".next/types/**/*.ts",
-    "src/lib/crypto.js",
+    "src/services/crypto/crypto.ts",
     "src/app/api/auth/[...nextauth].js"
   ],
   "exclude": ["node_modules"]

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { verifyChallenge } from "../../../lib/crypto";
+import { verifyChallenge } from "../../../services/crypto/crypto";
 
 export default async function GET(req: Request) {
   if (req.method !== "GET") {
