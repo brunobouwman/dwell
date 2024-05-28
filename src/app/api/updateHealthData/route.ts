@@ -20,17 +20,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // if (!newData) {
-    //   return NextResponse.json(
-    //     { error: "No new data provided" },
-    //     { status: 400 }
-    //   );
-    // }
-
-    // if (!currentData) {
-    //   console.log("User has no current health data");
-    // }
-
     const serviceFactory = new ServiceFactory();
 
     const updated = await serviceFactory.updateHealthData({

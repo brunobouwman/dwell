@@ -1,6 +1,6 @@
 "use client";
 
-import { abi, address as nftContractAddress } from "@/contracts/NFT";
+import { abi, address as nftContractAddress } from "@/lib/contracts/NFT";
 import React, {
   ReactNode,
   createContext,

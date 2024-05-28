@@ -40,7 +40,8 @@ export const stepContent: StepContent[] = [
     type: STEP_CONTENT.MINTFIRST,
     steps: [
       {
-        title: " Confirm transaction",
+        title: "Transaction Confirmed!",
+        loadingTitle: "Confirm transaction",
         initEvent: "",
         successEvent: INTERNAL_EVENTS.TRANSACTION_CONFIRMED,
         failEvent: INTERNAL_EVENTS.CLOSE_MODAL,
@@ -58,27 +59,28 @@ export const stepContent: StepContent[] = [
     type: STEP_CONTENT.UPDATE,
     steps: [
       {
-        title: "Confirm transaction",
+        loadingTitle: "Confirm transaction!",
+        title: "Transaction Confirmed",
         initEvent: "",
         successEvent: INTERNAL_EVENTS.TRANSACTION_CONFIRMED,
         failEvent: INTERNAL_EVENTS.CLOSE_MODAL,
       },
       {
-        title: "New health data retrieved",
+        title: "New health data retrieved!",
         loadingTitle: "Retrieving new  healthdata...",
         initEvent: INTERNAL_EVENTS.NEW_HEALTH_DATA_INIT,
         successEvent: INTERNAL_EVENTS.NEW_HEALTH_DATA_RETRIEVED,
         failEvent: INTERNAL_EVENTS.NEW_HEALTH_DATA_ERROR,
       },
       {
-        title: "Encrypted health data retrieved",
+        title: "Encrypted health data retrieved!",
         loadingTitle: "Retrieving encrypted health data...",
         initEvent: INTERNAL_EVENTS.HEALTH_DATA_INIT,
         successEvent: INTERNAL_EVENTS.HEALTH_DATA_RETRIEVED,
         failEvent: INTERNAL_EVENTS.HEALTH_DATA_ERROR,
       },
       {
-        title: "Health data updated !",
+        title: "Health data updated!",
         loadingTitle: "Updating health data...",
         initEvent: INTERNAL_EVENTS.DATA_UPDATE_INIT,
         successEvent: INTERNAL_EVENTS.DATA_UPDATE_CONFIRMED,
@@ -90,7 +92,8 @@ export const stepContent: StepContent[] = [
     type: STEP_CONTENT.CLAIM,
     steps: [
       {
-        title: " Confirm transaction",
+        title: "transaction confirmed!",
+        loadingTitle: "Confirm transaction",
         initEvent: "",
         successEvent: INTERNAL_EVENTS.TRANSACTION_CONFIRMED,
         failEvent: INTERNAL_EVENTS.CLOSE_MODAL,
